@@ -3,5 +3,8 @@
         "endregion",
         "Toastify",
         "tostify"
-    ]
+    ],
+    "editor.tokenColorCustomizations": {
+    "comments": "#4d4f53" //#6a737d
+},
 }
