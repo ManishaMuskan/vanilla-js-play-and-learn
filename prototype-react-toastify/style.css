@@ -1,0 +1,102 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+:root {
+  --toast-width: 250px;
+}
+
+.toast-container {
+  width: var(--toast-width);
+  position: fixed;
+  margin: 10px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* select me toast-container that has data-position attribute and that starts with top- */
+.toast-container[data-position^="top-"] {
+  top: 0;
+}
+
+.toast-container[data-position^="bottom-"] {
+  bottom: 0;
+}
+
+/* select me toast-container that has data-position attribute and that ends with -right */
+.toast-container[data-position$="-right"] {
+  right: 0;
+}
+
+.toast-container[data-position$="-left"] {
+  left: 0;
+}
+
+.toast-container[data-position$="-center"] {
+  /* left: calc(50% - var(--toast-width) / 2);  */ /*also works*/
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.toast {
+  width: 100%;
+  padding: 1rem;
+  font-size: 0.9rem;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 0.25em;
+  position: relative;
+  cursor: pointer;
+  transition: transform 250ms ease-in-out;
+}
+
+.toast-container[data-position$="-right"] .toast {
+  transform: translateX(110%);
+}
+
+.toast-container[data-position$="-left"] .toast {
+  transform: translateX(-110%);
+}
+
+.toast-container[data-position$="-center"] .toast {
+  /*it comes relative to screen top*/
+  /* transform: translateY(-100vh); */
+
+  /*it comes relative to adjacent element*/
+  transform: translateY(-0.9rem);
+}
+
+.toast-container[data-position^="bottom-"] .toast {
+  /*it comes relative to screen top*/
+  /* transform: translateY(-100vh); */
+
+  /*it comes relative to adjacent element*/
+  transform: translateY(0.9rem);
+}
+
+.toast-container .toast.show {
+  transform: translateX(0);
+}
+
+.toast.can-close::after {
+  content: "\00D7";
+  position: absolute;
+  top: 2px;
+  right: 5px;
+  font-size: 1.3rem;
+}
+
+.toast.show-progress::before {
+  content: "";
+  position: absolute;
+  height: 3px;
+  background-color: blue;
+  width: var(--remaining-progress); /*setting dynamically from js*/
+  left: 0;
+  bottom: 0;
+  font-size: 1.3rem;
+  overflow: hidden;
+}
