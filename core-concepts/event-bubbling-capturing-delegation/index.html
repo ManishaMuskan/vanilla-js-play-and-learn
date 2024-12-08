@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Propagation Concepts</title>
+    <style>
+      div {
+        border: 1px solid black;
+        padding: 20px;
+      }
+
+      div#child {
+        width: 100px;
+        height: 100px;
+      }
+
+      div#parent {
+        width: 140px;
+        height: 140px;
+      }
+
+      div#grandParent {
+        width: 180px;
+        height: 180px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Event Bubbling and Event Capturing</h2>
+    <p>
+      <strong>Trickling Down and Bubbling up</strong> - this is phrase to
+      remember the concept
+    </p>
+    <h3>Event Propagation cycle</h3>
+    <p>
+      when an element is attached to an event it goes through event propagation
+      cycle, first it goes through event trickling phase where the event occurs
+      from the top most parent till the event of target element is reached.
+    </p>
+    <p>
+      After that, it goes through event bubbling phase where it bubbles up the
+      event from target element till it reaches to the top most parent in DOM
+      tree hierarchy
+    </p>
+    <p>
+      this behavior can be controlled by using third argument while attaching an
+      event listener to the element, 'useCaptureFlag' - when the value is falsy
+      or value is not provided, event bubbling phase is enabled. and when the
+      value is true, event capturing mode is enabled. And based on this mode,
+      event-propagation cycle is completed when a target element trigger an
+      event
+    </p>
+
+    <h4>play around</h4>
+    <div class="flexBtnGroup">
+      <p>choose the concept to play around</p>
+      <button type="button" data-concept="bubbling">Bubbling</button>
+      <button type="button" data-concept="capturing">Capturing</button>
+      <button type="button" data-concept="mixed">Mixed</button>
+    </div>
+    <br />
+    <div id="grandParent">
+      <div id="parent">
+        <div id="child"></div>
+      </div>
+    </div>
+
+    <h3>Event Delegation</h3>
+    <p>
+      it is a feature by using which we can attach an event-listener to all the
+      child items by just attaching an event-listener to the parent element. As
+      by-default events get bubbled up, this gives us the flexibility to attach
+      one only event-listener to the parent element to control the behavior of
+      child elements
+    </p>
+    <script src="./index.js"></script>
+  </body>
+</html>
