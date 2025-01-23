@@ -1,0 +1,90 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  margin: 30px;
+}
+
+ul {
+  list-style: none;
+  text-align: left;
+  padding: 0;
+  margin: 0;
+}
+
+ul li {
+  margin-bottom: 10px;
+}
+
+h4 {
+  margin: 16px 0;
+}
+
+.container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding: 30px;
+  border: 1px solid red;
+  margin-bottom: 10px;
+  gap: 100px;
+  min-height: 50vh;
+}
+
+.btn-add-todo {
+  padding: 10px;
+  background-color: #90caf9;
+  width: 100px;
+  border-radius: 5px;
+  outline: none;
+}
+
+.flex-col {
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-group {
+  display: flex;
+  gap: 30px;
+}
+
+.shapes-container {
+  display: flex;
+  gap: 10px;
+  margin: 0 auto;
+  border: 1px solid blueviolet;
+  min-height: 50px;
+  width: 100%;
+  padding: 10px;
+  flex-wrap: wrap;
+}
+
+.shapes-container li {
+  margin-bottom: 0;
+}
+
+.shape {
+  background-color: #00bfff;
+  border: 1px solid black;
+}
+
+.circle {
+  background-color: tomato;
+  border-radius: 50%;
+}
+
+.shape.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
